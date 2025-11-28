@@ -1,31 +1,38 @@
 NAME = ircserv
-
-CCFLAGS = -std=c++98 -Wall -Werror -Wextra
-
 CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = Main.cpp \
-		Serveur.cpp \
-		Client.cpp \
+SRCS = main.cpp \
+		SRC/Authenti.cpp \
+		SRC/Channel.cpp \
+		SRC/Client.cpp \
+		SRC/Server.cpp \
+		CMD/INVITE.cpp \
+		CMD/JOIN.cpp \
+		CMD/KICK.cpp \
+		CMD/MODE.cpp \
+		CMD/PART.cpp \
+		CMD/PRIVMSG.cpp \
+		CMD/QUIT.cpp \
+		CMD/TOPIC.cpp \
 
 
-%.o: %.cpp
-			$(CC) &(CCFLAGS) -c $< -o $@
-
-OBJS = $(SRC:%.cpp=%.o)
-
-$(NAME): $(OBJS)
-				$(CC) $(CCFLAGS) $(SRC) -o ${NAME}
+OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.cpp INC/Server.hpp INC/Client.hpp INC/Channel.hpp INC/replies.hpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-				rm -f %(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-				rm -f $(NAME)
+	@rm -f $(NAME) a.out
 
-re: fclean
-				make
+re: fclean all
 
-PHONY: all clean fclean re
+.PHONY: all clean fclean re
