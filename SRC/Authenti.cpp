@@ -6,7 +6,7 @@
 /*   By: trysinsk <trysinsk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 10:37:05 by trysinsk          #+#    #+#             */
-/*   Updated: 2025/12/01 10:37:07 by trysinsk         ###   ########.fr       */
+/*   Updated: 2025/12/01 12:07:05 by trysinsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ void	Server::set_username(std::string& cmd, int fd)
 
 	Client *cli = GetClient(fd); 
 	if((cli && splited_cmd.size() < 5))
-		{_sendResponse(ERR_NOTENOUGHPARAM(cli->GetNickName()), fd); return; }
+		{_sendResponse(ERR_NOTENOUGHPARAM(cli->GetNickName()), fd); 
+		_sendResponse (ERR_NOTENOUGHPARAM2(cli->GetNickName()), fd); return; }
 	if(!cli  || !cli->getRegistered())
 		_sendResponse(ERR_NOTREGISTERED(std::string("*")), fd);
 	else if (cli && !cli->GetUserName().empty())
