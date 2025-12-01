@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   JOIN.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: trysinsk <trysinsk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/01 10:38:34 by trysinsk          #+#    #+#             */
+/*   Updated: 2025/12/01 10:38:36 by trysinsk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../INC/Server.hpp"
 
 int Server::SplitJoin(std::vector<std::pair<std::string, std::string> > &token, std::string cmd, int fd)

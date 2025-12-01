@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Server.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: trysinsk <trysinsk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/01 10:37:13 by trysinsk          #+#    #+#             */
+/*   Updated: 2025/12/01 10:37:16 by trysinsk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
@@ -87,7 +99,6 @@ public:
 	std::vector<std::string> split_cmd(std::string &str);
 	void parse_exec_cmd(std::string &cmd, int fd);
 	//---------------//Authentification Methods
-	bool BypassForBot(std::string cmd, int fd);
 	bool notregistered(int fd);
 	bool nickNameInUse(std::string& nickname);
 	bool is_validNickname(std::string& nickname);
